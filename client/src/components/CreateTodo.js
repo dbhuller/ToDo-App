@@ -70,6 +70,13 @@ function CreateTodo() {
                         <label className='form-check-label'>High</label>
                     </div>
                 </div>
+                <div className='form-group'>
+                    <input
+                        type='submit'
+                        value='Create Todo'
+                        className='btn btn-primary'
+                    />
+                </div>
             </form>
         </div>
     )
