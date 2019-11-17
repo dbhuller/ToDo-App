@@ -1,13 +1,8 @@
 import React from 'react';
 
 
-
+// function component for TodoList
 function TodosList(props) {
-
-    const [description, setDescription] = React.useState('');
-    const [author, setAuthor] = React.useState('');
-    const [priority, setPriority] = React.useState('');
-    const [completed, setCompleted] = React.useState(false);
 
     /*
     let state = {
