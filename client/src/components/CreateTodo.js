@@ -10,10 +10,27 @@ function CreateTodo() {
     const [priority, setPriority] = React.useState('');
     const [completed, setCompleted] = React.useState(false);
 
+    const printFormData = () => {
+        let formData = {
+            todo_description: description,
+            todo_author: author,
+            todo_priority: priority, 
+        }
+        console.log('Form Submitted', formData);
+        return formData;
+        /*
+        console.log('Form Submitted');
+        console.log(`Todo Description: ${description}`);
+        console.log(`Todo Author: ${author}`);
+        console.log(`Todo Priority: ${priority}`);
+        console.log(`Todo Completed: ${completed}`);
+        */
+    }
+
     return (
         <div>
             <h2>Create Todo Component</h2>
-            <form>
+            <form onSubmit={e => e.preventDefault()}>
                 <div className='form-group'>
                     <label>Description:</label>
                     <input
@@ -75,6 +92,7 @@ function CreateTodo() {
                         type='submit'
                         value='Create Todo'
                         className='btn btn-primary'
+                        onClick={e => printFormData(e)}
                     />
                 </div>
             </form>
