@@ -1,21 +1,28 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 
 // function component for CreateTodo
 function CreateTodo() {
 
     //state hooks
-    const [description, setDescription] = React.useState('');
-    const [author, setAuthor] = React.useState('');
-    const [priority, setPriority] = React.useState('');
+    const [description, setDescription] = React.useState('')
+    const [author, setAuthor] = React.useState('')
+    const [priority, setPriority] = React.useState('')
     const [completed, setCompleted] = React.useState(false);
 
-    const printFormData = () => {
+    
+
+    const submitTodo = () => {
         let formData = {
             todo_description: description,
             todo_author: author,
             todo_priority: priority, 
         }
+
+
+        axios.post('http://localhost:4000/todos/add', formData).then(res => console.log(res.data));
+
         console.log('Form Submitted', formData);
         return formData;
         /*
@@ -26,6 +33,8 @@ function CreateTodo() {
         console.log(`Todo Completed: ${completed}`);
         */
     }
+
+    
 
     return (
         <div>
@@ -92,7 +101,7 @@ function CreateTodo() {
                         type='submit'
                         value='Create Todo'
                         className='btn btn-primary'
-                        onClick={e => printFormData(e)}
+                        onClick={e => submitTodo(e)}
                     />
                 </div>
             </form>
